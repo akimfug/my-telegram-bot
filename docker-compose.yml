@@ -1,0 +1,17 @@
+services:
+  postgres:
+    restart: unless-stopped
+    image: postgres:16
+    env_file:
+      - .env
+    volumes:
+      - bot-telegram-postgres:/var/lib/postgresql/data
+    ports:
+      - 5434:5432
+    environment:
+      - POSTGRES_DB=telegramDB
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=admin
+
+volumes:
+  bot-telegram-postgres:
